@@ -6,7 +6,8 @@ public class Romain {
 	
 	public Romain(String nom, int force) {
 		this.nom = nom;
-		this.force = force;
+		this.force = force; 
+		assert (force>=0);
 	}
 	
 	public String getNom() {
@@ -20,7 +21,7 @@ public class Romain {
 	
 	
 	public void parler(String texte) {
-		System.out.println(prendreParole() + "Â« " + texte + " Â»");
+		System.out.println(prendreParole() + "« " + texte + " »");
 	}
 	
 	private String prendreParole() {
@@ -28,12 +29,15 @@ public class Romain {
 	}
 	
 	public void recevoirCoup(int forceCoup) {
+		int forceInitiale = force;
+		assert (forceCoup>=0);
 		force -= forceCoup;
 		if (force >0) {
-			parler("AÃ¯e");
+			parler("Aïe");
 		}else {
 			parler("J'abandonne...");
 		}
+		assert (force<forceInitiale);
 	}
 	
 	@Override
@@ -43,11 +47,11 @@ public class Romain {
 	}
 	
 	public static void main(String[] args) {
-		Romain ceasar = new Romain("CÃ©asar",12);
-		System.out.println(ceasar);
-		System.out.println(ceasar.prendreParole());
-		ceasar.parler("hoho");
-		ceasar.recevoirCoup(2);
-		System.out.println(ceasar);
+		Romain minus = new Romain("Minus",6);
+		System.out.println(minus);
+		System.out.println(minus.prendreParole());
+		minus.parler("hoho");
+		minus.recevoirCoup(2);
+		System.out.println(minus);
 	}
 }
