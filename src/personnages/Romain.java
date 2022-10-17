@@ -3,10 +3,13 @@ package personnages;
 public class Romain {
 	private String nom;
 	private int force;
+	private Equipement[] equipement;
+	private int nbEquipement = 0;
 	
 	public Romain(String nom, int force) {
 		this.nom = nom;
 		this.force = force; 
+		this.equipement = new Equipement[2];
 		assert (force>=0);
 	}
 	
@@ -21,7 +24,7 @@ public class Romain {
 	
 	
 	public void parler(String texte) {
-		System.out.println(prendreParole() + "« " + texte + " »");
+		System.out.println(prendreParole() + "ï¿½ " + texte + " ï¿½");
 	}
 	
 	private String prendreParole() {
@@ -33,11 +36,40 @@ public class Romain {
 		assert (forceCoup>=0);
 		force -= forceCoup;
 		if (force >0) {
-			parler("Aïe");
+			parler("Aï¿½e");
 		}else {
 			parler("J'abandonne...");
 		}
 		assert (force<forceInitiale);
+	}
+	
+	public void presente(String text) {
+		System.out.println("Le soldat " + nom + text + ".");
+	}
+	
+	public void equipe(Equipement equip) {
+		presente(" s'Ã©quipe avec un " + equip.getNom());
+		nbEquipement ++;
+		equipement[nbEquipement-1]=equip;
+	}
+	
+	public void sEquiper(Equipement equip) {
+		switch(nbEquipement) {
+			case 2:
+				presente(" est dÃ©ja bien protÃ©gÃ© !");
+				break;
+			case 1 :
+				if (equip == equipement[0]) {
+					presente(" possÃ¨de deja un " + equip.getNom());
+				} 
+				else {
+					equipe(equip);
+				}
+				break;
+			case 0 :
+				equipe(equip);
+				break;
+		}
 	}
 	
 	@Override
@@ -47,11 +79,20 @@ public class Romain {
 	}
 	
 	public static void main(String[] args) {
-		Romain minus = new Romain("Minus",6);
+		Romain minus = new Romain("Minus", 6);
+		minus.nom = "minus";
+		minus.force = 6;
 		System.out.println(minus);
 		System.out.println(minus.prendreParole());
 		minus.parler("hoho");
 		minus.recevoirCoup(2);
 		System.out.println(minus);
+		System.out.println(Equipement.CASQUE);
+		System.out.println(Equipement.BOUCLIER);
+		minus.sEquiper(Equipement.CASQUE);
+		minus.sEquiper(Equipement.CASQUE);
+		minus.sEquiper(Equipement.BOUCLIER);
+		minus.sEquiper(Equipement.CASQUE);
+		
 	}
 }
