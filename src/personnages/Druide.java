@@ -22,7 +22,7 @@ public class Druide {
 	}
 	
 	public void parler(String texte) {
-			System.out.println(prendreParole() + "« " + texte + " »");
+			System.out.println(prendreParole() + "<< " + texte + " >>");
 	
 	}
 	
@@ -39,21 +39,18 @@ public class Druide {
 	
 	public void faireParler() {
 		if (forcePotion > 7) {
-			parler("J'ai préparé\n"
-					+ "une super potion de force : "+ forcePotion);
+			parler("J'ai prepare une super potion de force : "+ forcePotion);
 		}
 		else {
-			parler("Je n'ai pas trouvé tous les ingrédients, ma potion est\n"
-					+ "seulement de force : " + forcePotion );
+			parler("Je n'ai pas trouve tous les ingredients, ma potion est seulement de force : " + forcePotion );
 		}
 		
 	}
 	
 	public void booster(Gaulois gaulois) {
 		String nomGaulois = gaulois.getNom();
-		if ("Obélix".equals(nomGaulois)) {
-			parler("Non, Obélix !... Tu n’auras pas de potion\n"
-					+ "magique ! ");
+		if ("Obelix".equals(nomGaulois)) {
+			parler("Non, Obelix !... Tu n auras pas de potion magique ! ");
 		} else {
 			gaulois.boirePotion(forcePotion);
 		}
