@@ -1,4 +1,8 @@
-package personnages;
+package villageGaulois;
+
+import personnages.Equipement;
+import personnages.Gaulois;
+import personnages.Trophee;
 
 public class Musee {
 	private Trophee[] trophees = new Trophee[200];
@@ -15,8 +19,8 @@ public class Musee {
 		for (int i = 0; i < nbTrophee; i++) {
 			texte += "   \"" + trophees[i].donnerNom() + "\", \"" + trophees[i].getEquipement().getNom() + "\";\n";
 		}
-		String Ocaml = "let musee = [ \n" + texte + "]";
-		System.out.println(Ocaml);
-		return Ocaml;
+		String ocaml = "let musee = [ \n" + texte + "]";
+		System.out.println(ocaml);
+		return ocaml;
 	}
 }

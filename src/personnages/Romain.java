@@ -50,7 +50,7 @@ public class Romain {
 		assert force > 0;
 		int oldForce = force;
 		forceCoup = calculResistanceEquipement(forceCoup);
-		force -= forceCoup;
+		force = force- forceCoup;
 		// if (force > 0) {
 		// parler("Aie");
 		// } else {
@@ -83,14 +83,12 @@ public class Romain {
 						System.out.println("Equipement casque");
 					resistanceEquipement += 5;
 					}
-					
 				}
 			}
 			if (forceCoup < resistanceEquipement) {
-				resistanceEquipement = forceCoup;
+				resistanceEquipement = forceCoup-1;
 			} 
 			texte += resistanceEquipement + "!";
-			
 		}
 		parler(texte);
 		forceCoup -= resistanceEquipement;
